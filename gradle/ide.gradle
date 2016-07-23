@@ -1,0 +1,10 @@
+apply plugin: "idea"
+apply plugin: "eclipse"
+
+allprojects {
+    idea {
+        module {
+            excludeDirs += [file('build'), file('data'), file('log')]
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mean Comments</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/stylesheets/app.css" rel="stylesheet">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="/thirdparty/gravatar.min.js"></script>
+
+    <script src="/javascripts/angularApp.js"></script>
+    <script src="/javascripts/controllers/comments.ctrl.js"></script>
+    <script src="/javascripts/services/comments.srv.js"></script>
+
+</head>
+<body ng-app="mean-comments">
+<div class="page-header"></div>
+<div ng-controller="CommentsCtrl as commentsCtrl">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form class="form-horizontal" role="form" name="addCommentForm" ng-submit="commentsCtrl.addComment()" novalidate>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" ng-model="commentsCtrl.email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" placeholder="Message" ng-model="commentsCtrl.content" required></textarea>
+                </div>
+                <div class="form-group" align="right">
+                    <button type="submit" class="btn btn-primary" ng-disabled="addCommentForm.$invalid">SUBMIT</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 form-group search">
+            <span class="fa fa-search"></span>
+            <input placeholder="Filter" ng-model="filterParam">
+        </div>
+        <div class="col-md-6 col-md-offset-3">
+            <div ng-repeat="comment in commentsCtrl.comments | filter:filterParam">
+                <gravatar-image data-gravatar-email="comment.email" data-gravatar-size="40" data-gravatar-default="identicon"></gravatar-image>
+                <span>{{comment.email}}</span>
+                <div>{{comment.content}}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/milestone" }
+        maven { url "http://dl.bintray.com/robfletcher/gradle-plugins" }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    //maven { url "https://repo.spring.io/libs-release" }
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile 'org.springframework.boot:spring-boot-starter-actuator'
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    //compile 'org.springframework.boot:spring-boot-starter-security'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'org.projectlombok:lombok:1.16.10'
+
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
+    testCompile 'com.jayway.jsonpath:json-path:2.2.0'
+    testCompile 'org.skyscreamer:jsonassert:1.3.0'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.+"
+}
+
+task createApplicationYml {
+    def defaultYml = "application.yml.default"
+    def ymlTarget = "$buildDir/$defaultYml"
+    outputs.file file(ymlTarget)
+    doLast {
+        copy {
+            from "$projectDir/src/main/resources/application.yml"
+            into buildDir
+            rename "application.yml", defaultYml
+        }
+    }
+}
+
+applicationDistribution.from(createApplicationYml) {
+    into "bin"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.13'
+}
