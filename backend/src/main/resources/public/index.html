@@ -2,15 +2,15 @@
 <html>
 <head>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="/thirdparty/angular-material.css">
+    <link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="/stylesheets/app.css" rel="stylesheet">
 
-    <script src="/thirdparty/angular.js"></script>
-    <script src="/thirdparty/angular-aria.js"></script>
-    <script src="/thirdparty/angular-animate.js"></script>
-    <script src="/thirdparty/angular-material.js"></script>
+    <script src="/node_modules/angular/angular.js"></script>
+    <script src="/node_modules/angular-aria/angular-aria.js"></script>
+    <script src="/node_modules/angular-animate/angular-animate.js"></script>
+    <script src="/node_modules/angular-material/angular-material.js"></script>
 
     <script src="/thirdparty/gravatar.min.js"></script>
 
@@ -22,17 +22,6 @@
 
 </head>
 <body ng-app="mean-comments" layout="column">
-<md-content>
-    <div layout="row" layout-align="center start">
-        <md-card>
-            <md-card-content flex layout-padding>
-                <div ng-controller="CommentsCtrl as commentsCtrl">
-                    <div ui-view></div>
-                </div>
-            </md-card-content>
-        </md-card>
-    </div>
-</md-content>
-
+    <div ui-view></div>
 </body>
 </html>

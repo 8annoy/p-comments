@@ -45,3 +45,7 @@ md-list-item img {
     font-size: larger;
     color: #aaaaaa;
 }
+
+textarea {
+    resize: vertical;
+}
