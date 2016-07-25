@@ -3,10 +3,10 @@
     <div class="formSection lightGray container">
         <form class="form-vertical commentsForm" flex role="form" name="addCommentForm" ng-submit="commentsCtrl.addComment()" novalidate>
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="Email" ng-model="commentsCtrl.email" required>
+                <input id="input-email" type="email" class="form-control" placeholder="Email" ng-model="commentsCtrl.email" required>
             </div>
             <div class="form-group">
-                <textarea class="form-control" placeholder="Message" ng-model="commentsCtrl.content" required></textarea>
+                <textarea id="input-text" class="form-control" placeholder="Message" ng-model="commentsCtrl.content" required></textarea>
             </div>
             <div class="form-group" align="right">
                 <button type="submit" class="btn btn-primary" ng-disabled="addCommentForm.$invalid">SUBMIT</button>

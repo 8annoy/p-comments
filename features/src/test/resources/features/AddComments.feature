@@ -1,6 +1,8 @@
 Feature: AddComments
 
-  Scenario: Greet me with Hello World
+  @DeleteComments
+  Scenario: Add new comment
     Given I am on the home page
-    Then I should see "Hello World"
+    When I create a new comment
+    Then I should see it in the comments list
 

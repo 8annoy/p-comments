@@ -2,6 +2,7 @@ package features
 
 import cucumber.api.groovy.EN
 import cucumber.api.groovy.Hooks
+import features.support.MyWorld
 
 import static cucumber.api.groovy.EN.Then
 
@@ -13,7 +14,7 @@ World {
 }
 
 Before {
-    browser.startBrowser('http://localhost:8888/app')
+    browser.startBrowser(domain)
 }
 
 After {
