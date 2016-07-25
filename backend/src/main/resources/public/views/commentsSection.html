@@ -1,0 +1,35 @@
+
+<div class="mainSection">
+    <div class="formSection lightGray container">
+        <form class="form-vertical commentsForm" flex role="form" name="addCommentForm" ng-submit="commentsCtrl.addComment()" novalidate>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" ng-model="commentsCtrl.email" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" placeholder="Message" ng-model="commentsCtrl.content" required></textarea>
+            </div>
+            <div class="form-group" align="right">
+                <button type="submit" class="btn btn-primary" ng-disabled="addCommentForm.$invalid">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+    <div class="commentsSection">
+        <div layout-padding>
+            <div class="form-group search" layout-padding>
+                <span class="fa fa-search"></span>
+                <input placeholder="Filter" ng-model="filterParam">
+            </div>
+            <div>
+                <md-list-item class="md-1-line" ng-repeat="comment in commentsCtrl.comments | filter:filterParam">
+                    <gravatar-image id="avatar" data-gravatar-email="comment.email" data-gravatar-size="50" data-gravatar-default="identicon"></gravatar-image>
+                    <div class="md-list-item-text commentEntry">
+                        <h5>{{comment.email }}</h5>
+                        <p>{{ comment.content }}</p>
+                    </div>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </div>
+
+        </div>
+    </div>
+</div>

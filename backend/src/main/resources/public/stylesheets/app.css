@@ -14,6 +14,34 @@
 
 .search .fa-search {
     position: absolute;
-    top: 8px;
-    left: 20px;
+    top: 12px;
+    left: 15px;
+}
+
+
+.lightGray {
+    background-color: lightgrey;
+}
+
+.commentsSection {
+    left: 50px;
+    right: 50px;
+}
+
+.commentEntry {
+    padding: 10px;
+}
+
+.commentsForm {
+    margin-top: 10px;
+}
+
+md-list-item img {
+    border-radius: 10%;
+}
+
+.commentEntry p {
+    font-family: 'Lucida Grande', serif;
+    font-size: larger;
+    color: #aaaaaa;
 }

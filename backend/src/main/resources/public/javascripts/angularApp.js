@@ -3,5 +3,16 @@
  */
 'use strict';
 (function () {
-    angular.module('mean-comments', ['angularjs-gravatardirective']);
+    angular.module('mean-comments', ['ui.router', 'ngMaterial', 'angularjs-gravatardirective'])
+        .config(function($stateProvider, $urlRouterProvider) {
+            $urlRouterProvider.otherwise('/');
+
+            $stateProvider
+
+                // HOME STATES AND NESTED VIEWS ========================================
+                .state('home', {
+                    url: '/',
+                    templateUrl: 'views/commentsSection.html'
+                });
+        });
 })();
